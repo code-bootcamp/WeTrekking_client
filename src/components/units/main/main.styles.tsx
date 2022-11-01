@@ -1,6 +1,5 @@
 import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
-import { mainColor } from "../../../commons/styles/color";
 
 const ScrollAnimation = keyframes`
   0% {
@@ -29,6 +28,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
 
 export const MainTextBox = styled.div`
@@ -58,7 +58,7 @@ export const CrewFindBtn = styled.button`
 `;
 
 export const ScrollBox = styled.div`
-  position: fixed;
+  position: absolute;
   z-index: 999;
   bottom: 60px;
   left: 50%;

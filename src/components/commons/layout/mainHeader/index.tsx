@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { useRouter } from "next/router";
 import { mainColor } from "../../../../commons/styles/color";
 
 const Wrapper = styled.div`
@@ -7,6 +8,7 @@ const Wrapper = styled.div`
   left: 0;
   width: 100%;
   padding: 24px 0;
+  z-index: 9999;
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.2);
@@ -29,7 +31,8 @@ const Wrapper = styled.div`
   }
 `;
 
-const LogoBox = styled.div`
+const LogoBox = styled.h1`
+  cursor: pointer;
   .logoGreen {
     display: none;
   }
@@ -74,18 +77,34 @@ const LoginBtn = styled.button`
   font-size: 16px;
   font-weight: 700;
   color: #fff;
+  cursor: pointer;
 `;
 
 const JoinBtn = styled(LoginBtn)`
   background-color: ${mainColor};
   border: 1px solid ${mainColor};
+  cursor: pointer;
 `;
 
 const MainHeader = () => {
+  const router = useRouter();
+
+  const onClickToMain = () => {
+    void router.push("/");
+  };
+
+  const onClickToLogin = () => {
+    void router.push("/login");
+  };
+
+  const onClickToJoin = () => {
+    void router.push("/join");
+  };
+
   return (
     <Wrapper>
       <Header>
-        <LogoBox>
+        <LogoBox onClick={onClickToMain}>
           <img
             src="/images/main/logo-white.png"
             alt="로고"
@@ -105,10 +124,12 @@ const MainHeader = () => {
         </Navigation>
         <SnbMenu>
           <SnbList>
-            <LoginBtn className="loginBtn">로그인</LoginBtn>
+            <LoginBtn className="loginBtn" onClick={onClickToLogin}>
+              로그인
+            </LoginBtn>
           </SnbList>
           <SnbList>
-            <JoinBtn>회원가입</JoinBtn>
+            <JoinBtn onClick={onClickToJoin}>회원가입</JoinBtn>
           </SnbList>
         </SnbMenu>
       </Header>
