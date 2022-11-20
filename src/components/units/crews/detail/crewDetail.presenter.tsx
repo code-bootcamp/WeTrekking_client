@@ -219,6 +219,7 @@ const CrewDetailUi = ({
             <S.ListInform>
               <S.BodyTitle>참가자 리스트</S.BodyTitle>
               <S.CrewListBox>
+                {console.log(acceptedList)}
                 <S.CrewList>
                   {acceptedList?.fetchAcceptedList.length}
                 </S.CrewList>
