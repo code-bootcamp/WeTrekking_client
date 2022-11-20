@@ -26,6 +26,7 @@ const CrewListUi = ({
   onChangeDate,
   onClickLatestSearch,
   visible,
+  onClickDeadLineSearch,
 }: ICrewListUiProps) => {
   const { Option } = Select;
 
@@ -138,7 +139,11 @@ const CrewListUi = ({
                 </S.MountainSearchBtn>
               </S.MountainSearchBox>
               <S.SearchBtnBox>
-                <S.SearchBtn onClick={onClickLatestSearch}>검색</S.SearchBtn>
+                <S.SearchBtn
+                  onClick={sort ? onClickLatestSearch : onClickDeadLineSearch}
+                >
+                  검색
+                </S.SearchBtn>
                 <S.RegisterBtn onClick={onClickToWrite}>글쓰기</S.RegisterBtn>
               </S.SearchBtnBox>
             </S.SearchBox>
@@ -283,6 +288,7 @@ const CrewListUi = ({
                               모집인원 {listMap?.assignedUsers.length}/
                               {listMap?.peoples}
                             </S.ListCrewsNum>
+                            {console.log(listMap?.assignedUsers)}
                           </S.ListCrewsBox>
                         </S.ListBody>
                         <S.ListFooter>

@@ -24,27 +24,29 @@ const ReviewListUi = ({
             <S.ListLiWrite>작성자</S.ListLiWrite>
             <S.ListLiCreatedAt>작성일</S.ListLiCreatedAt>
           </S.TitleUl>
-          {data?.fetchReviewBoards[number].map((ReviewsMap, index) => (
-            <S.ContentUl key={ReviewsMap.id}>
+          {data?.fetchReviewBoards[number].map((reviewsMap, index) => (
+            <S.ContentUl key={reviewsMap.id}>
               <S.ListLiNum>{Number(index) + 1}</S.ListLiNum>
-              <S.ListLiMountain>백두산</S.ListLiMountain>
+              <S.ListLiMountain>
+                {reviewsMap.crewUserList.crewBoard.mountain.mountain}
+              </S.ListLiMountain>
               <S.ListLiTitle
                 style={{ width: isOpenSideBar ? "53%" : "58.33%" }}
               >
                 <S.Title
                   onClick={onClickList}
-                  id={ReviewsMap.id}
-                  className={reviewId === ReviewsMap.id ? "on" : ""}
+                  id={reviewsMap.id}
+                  className={reviewId === reviewsMap.id ? "on" : ""}
                 >
-                  {ReviewsMap.title}
+                  {reviewsMap.title}
                 </S.Title>
               </S.ListLiTitle>
               <S.ListLiWrite>
-                <S.Write>{ReviewsMap.user.nickname}</S.Write>
+                <S.Write>{reviewsMap.user.nickname}</S.Write>
               </S.ListLiWrite>
               <S.ListLiCreatedAt>
-                {console.log(ReviewsMap)}
-                <S.CreatedAt>{getDate(ReviewsMap.createdAt)}</S.CreatedAt>
+                {console.log(reviewsMap)}
+                <S.CreatedAt>{getDate(reviewsMap.createdAt)}</S.CreatedAt>
               </S.ListLiCreatedAt>
             </S.ContentUl>
           ))}

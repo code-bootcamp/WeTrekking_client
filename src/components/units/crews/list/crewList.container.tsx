@@ -43,11 +43,15 @@ const CrewList = () => {
     variables: { region: "", startDate: "", endDate: "", search: "" },
   });
 
-  const { data: deadLine } = useQuery<
+  const { data: deadLine, refetch: deadLineRefetch } = useQuery<
     Pick<IQuery, "fetchCrewBoardsDeadlineFirst">
-  >(FETCH_CREW_BOARDS_DEADLINE);
+  >(FETCH_CREW_BOARDS_DEADLINE, {
+    variables: { region: "", startDate: "", endDate: "", search: "" },
+  });
 
   const { data: loggedUser } = useQuery<Pick<IQuery, "fetchUser">>(FETCH_USER);
+
+  const search = mountainAddress.split("/", 1)[0].slice(0, -1);
 
   useEffect(() => {
     setLoginId(String(loggedUser?.fetchUser.id));
@@ -101,10 +105,6 @@ const CrewList = () => {
   const onChangeRegion = (value: any) => {
     setRegion(value);
   };
-  // setSearch(mountainAddress.split("/", 1)[0].slice(0, -1));
-  // console.log(mountainAddress);
-
-  const search = mountainAddress.split("/", 1)[0].slice(0, -1);
 
   const onChangeDate = (value: any, stringDate: string) => {
     setStartDate(stringDate[0]);
@@ -113,6 +113,10 @@ const CrewList = () => {
 
   const onClickLatestSearch = async () => {
     await refetch({ region, startDate, endDate, search });
+  };
+
+  const onClickDeadLineSearch = async () => {
+    await deadLineRefetch({ region, startDate, endDate, search });
   };
 
   return (
@@ -133,6 +137,7 @@ const CrewList = () => {
       onChangeDate={onChangeDate}
       onClickLatestSearch={onClickLatestSearch}
       visible={visible}
+      onClickDeadLineSearch={onClickDeadLineSearch}
     />
   );
 };

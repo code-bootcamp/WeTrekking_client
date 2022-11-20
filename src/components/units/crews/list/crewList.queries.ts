@@ -42,8 +42,18 @@ export const FETCH_CREW_BOARDS_LATEST = gql`
 `;
 
 export const FETCH_CREW_BOARDS_DEADLINE = gql`
-  query fetchCrewBoardsDeadlineFirst {
-    fetchCrewBoardsDeadlineFirst {
+  query fetchCrewBoardsDeadlineFirst(
+    $region: String!
+    $startDate: String!
+    $endDate: String!
+    $search: String!
+  ) {
+    fetchCrewBoardsDeadlineFirst(
+      region: $region
+      startDate: $startDate
+      endDate: $endDate
+      search: $search
+    ) {
       id
       title
       date
