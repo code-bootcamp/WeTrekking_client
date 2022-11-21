@@ -47,7 +47,7 @@ const CrewReviewWrite = () => {
 
   const { data: crewBoardInfo } = useQuery(FETCH_CREW_BOARD, {
     variables: {
-      crewBoardId: crewBoardId,
+      crewBoardId,
     },
   });
 
@@ -69,7 +69,7 @@ const CrewReviewWrite = () => {
 
       await createReview({
         variables: {
-          crewUserListId: crewUserListId,
+          crewUserListId,
           createReviewBoardInput: data,
           imgURL: resultUrlsFlat,
         },
