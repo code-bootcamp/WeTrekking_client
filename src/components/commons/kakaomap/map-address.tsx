@@ -20,7 +20,7 @@ interface IProps {
 const CrewMap = (props: IProps) => {
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = `//dapi.kakao.com/v2/maps/sdk.js?autoload=false&libraries=services&appkey=abcd05d0eb39667951498f33e9ade254`;
+    script.src = `//dapi.kakao.com/v2/maps/sdk.js?autoload=false&libraries=services&appkey=${process.env.API_KEY}`;
     document.head.appendChild(script);
 
     script.onload = () => {
