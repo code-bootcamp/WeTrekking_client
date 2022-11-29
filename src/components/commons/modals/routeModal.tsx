@@ -68,7 +68,7 @@ const RouteModal = ({ mountain, address }: IRouteModalProps) => {
     const coordData = await getCoordinates(fetchData);
     const script = document.createElement("script");
     script.src = `//dapi.kakao.com/v2/maps/sdk.js?autoload=false&libraries=services&appkey=${String(
-      process.env.API_KEY
+      process.env.NEXT_PUBLIC_API_KEY
     )}`;
     document.head.appendChild(script);
 
